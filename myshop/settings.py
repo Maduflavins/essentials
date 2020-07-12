@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
+    'celery',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +106,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Braintree settings
+BRAINTREE_MERCHANT_ID = '8t9hzphn576zcj8j'
+BRAINTREE_PUBLIC_KEY = 'ydyx3qyq6c6ryrm6'
+BRAINTREE_PRIVATE_KEY = '07210bcfab6e43ce26caa56c36050e6e'
 
+import braintree
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
