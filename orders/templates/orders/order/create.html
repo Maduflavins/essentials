@@ -11,9 +11,16 @@
             <li>
                 {{ item.quantity }}x {{ item.product.name }}
             </li>
+            <span>${{ item.get_total_price | floatformat:2}}</span>
         {% endfor %}
+        {% if cart.coupon.code %}
+        <li>
+            "{{ cart.coupon.code }}"({{ cart.coupon.discount }}% off)
+            <span class="neg">- NGN{{ cart.get_discount | floatformat:2 }}</span>
+        </li>
+        {% endif %}
     </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
+    <p>Total: NGN{{ cart.get_total_price_after_discount | floatformat:2 }}</p>
 </div>
 <form method="POST" class="order-form">
     {{ form.as_p }}

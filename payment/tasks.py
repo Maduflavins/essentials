@@ -7,7 +7,7 @@ from django.conf import settings
 from orders.models import Order
 
 @task
-def payment_completted(order_id):
+def payment_completed(order_id):
     """
     Task to send an e-mail notification when an order is successfully created
     """

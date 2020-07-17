@@ -38,7 +38,7 @@ def order_detail(obj):
 
 def order_pdf(obj):
     url = reverse('orders:admin_order_pdf', args=[obj.id])
-    return mark_safe(f'<a href="{url}">PDF</a>)
+    return mark_safe(f'<a href="{url}">PDF</a>')
     order_pdf.short_description = 'Invoice'
 
 @admin.register(Order)
